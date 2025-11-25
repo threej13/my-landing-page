@@ -29,57 +29,51 @@
 
         /* --- Testimonials Section Styling --- */
         .testimonial-wrapper {
-            margin-top: 40px;
-            padding: 20px 0;
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            padding: 20px 20px 30px;
             background: #ffffff;
             border-radius: 5px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: left;
         }
 
         .testimonial-title {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
             color: #012b61;
             margin-bottom: 20px;
+            text-align: center;
         }
 
-        .scroll-container {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 10px 0;
-            scroll-behavior: smooth;
-        }
-
-        .scroll-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: #ccc;
-            border-radius: 10px;
+        .testimonial-list {
+            display: block;
         }
 
         .testimonial-card {
-            min-width: 280px;
             background: #fdfdfd;
             border-radius: 8px;
-            padding: 20px;
-            text-align: left;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            flex-shrink: 0;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
 
         .stars {
             color: #f4b400;
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .testimonial-card p {
+            font-size: 15px;
+            margin: 0;
         }
 
         .initials {
             font-weight: bold;
             margin-top: 10px;
             color: #012b61;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -94,7 +88,7 @@
     <div class="testimonial-wrapper">
         <div class="testimonial-title">Real Homeowner Experiences ⭐⭐⭐⭐⭐</div>
 
-        <div class="scroll-container">
+        <div class="testimonial-list">
 
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
