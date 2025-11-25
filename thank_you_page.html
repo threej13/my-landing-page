@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
             background: #f9f9f9;
             color: #333;
             text-align: center;
-            padding: 50px;
+            padding: 50px 20px;
         }
         .container {
             max-width: 600px;
@@ -27,12 +26,138 @@
         p {
             font-size: 18px;
         }
+
+        /* --- Testimonials Section Styling --- */
+        .testimonial-wrapper {
+            margin-top: 40px;
+            padding: 20px 0;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #012b61;
+            margin-bottom: 20px;
+        }
+
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
+
+        .testimonial-card {
+            min-width: 280px;
+            background: #fdfdfd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .stars {
+            color: #f4b400;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .initials {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #012b61;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>We Are Looking Forward to Discussing Your Homeowners Insurance Needs!</h1>
         <p>Thank you for submitting your information. One of our representatives will be reaching out shortly to help with your claim or policy review.</p>
     </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonial-wrapper">
+        <div class="testimonial-title">Real Homeowner Experiences ⭐⭐⭐⭐⭐</div>
+
+        <div class="scroll-container">
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Great company to work with! Would recommend them to anyone."</p>
+                <div class="initials">– C.M.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"They worked hard to make sure we got a quality roof even when insurance pushed back."</p>
+                <div class="initials">– K.S.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Made my life easy and turned a stressful situation into a smooth process."</p>
+                <div class="initials">– V.D.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Responsive, fair, and professional. Helped me get the most out of my storm claim."</p>
+                <div class="initials">– M.R.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Communication and professionalism were excellent. Roof installed in one day."</p>
+                <div class="initials">– B.H.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Amazing experience. They helped me every step of the way and got my roof covered."</p>
+                <div class="initials">– R.S.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Explained everything clearly and answered all my questions. Highly recommend."</p>
+                <div class="initials">– G.B.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"They got my claim approved after others failed. Truly grateful for their help."</p>
+                <div class="initials">– J.R.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"I settled for almost 4x what I originally submitted thanks to their expertise."</p>
+                <div class="initials">– A.W.</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Went above and beyond. Their honesty and communication gave me peace of mind."</p>
+                <div class="initials">– S.H.</div>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 </html>
