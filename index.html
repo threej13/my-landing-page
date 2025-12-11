@@ -217,26 +217,35 @@
     </a>
 </div>
 
-
 <script>
 document.getElementById("ia-lead-form").addEventListener("submit", async function (e) {
     e.preventDefault();
     const status = document.getElementById("form-status");
     status.textContent = "Submitting...";
 
-    const data = new FormData(this);
-    const response = await fetch(this.action, {
-        method: "POST",
-        body: data,
-        headers: { "Accept": "application/json" }
-    });
+    // Convert form to JSON
+    const formData = new FormData(this);
+    const json = {};
+    formData.forEach((value, key) => (json[key] = value));
 
-    if (response.ok) {
-        status.textContent = "Thanks! We've received your info.";
-        this.reset();
-        window.location.href = "thank_you_page.html";
-    } else {
-        status.textContent = "Something went wrong.";
+    try {
+        const response = await fetch(this.action, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(json),
+        });
+
+        if (response.ok) {
+            status.textContent = "Thanks! We've received your info.";
+            this.reset();
+            window.location.href = "thank_you_page.html";
+        } else {
+            status.textContent = "Something went wrong.";
+        }
+    } catch (err) {
+        status.textContent = "Submission failed.";
     }
 });
 </script>
