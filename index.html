@@ -211,7 +211,7 @@
 
 <!-- FOOTER -->
 <div class="footer">
-    © 2025 Insurances Ally | Licensed Public Adjusters<br>
+    © 2025 Insurance Ally | Licensed Public Adjusters<br>
     <a href="terms.html" style="color:#012b61; text-decoration:none; font-weight:bold;">
         Terms & Conditions
     </a>
@@ -220,6 +220,19 @@
 <script>
 document.getElementById("ia-lead-form").addEventListener("submit", async function (e) {
     e.preventDefault();
+
+    const phoneInput = document.getElementById("phone");
+    let rawPhone = phoneInput.value.replace(/\D/g, "");
+
+    // Enforce 10-digit US number
+    if (rawPhone.length !== 10) {
+        alert("Please enter a valid 10-digit U.S. phone number.");
+        return;
+    }
+
+    // Convert to E.164 for Twilio
+    phoneInput.value = "+1" + rawPhone;
+
     const status = document.getElementById("form-status");
     status.textContent = "Submitting...";
 
