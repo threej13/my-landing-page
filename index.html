@@ -239,14 +239,20 @@ document.getElementById("ia-lead-form").addEventListener("submit", async functio
   e.preventDefault();
 
   const phoneInput = document.getElementById("phone");
-  let rawPhone = phoneInput.value.replace(/\D/g, "");
+let rawPhone = phoneInput.value.replace(/\D/g, "");
 
-  if (rawPhone.length !== 10) {
-    alert("Please enter a valid 10-digit U.S. phone number.");
+// ✅ Handle both 10-digit and 11-digit US numbers
+if (rawPhone.length === 11 && rawPhone.startsWith("1")) {
+    rawPhone = rawPhone.substring(1);
+}
+
+if (rawPhone.length !== 10) {
+    alert("Please enter a valid U.S. phone number.");
     return;
-  }
+}
 
-  phoneInput.value = "+1" + rawPhone;
+// ✅ Convert to Twilio-friendly E.164
+phoneInput.value = "+1" + rawPhone;
 
   const data = new FormData(this);
 
