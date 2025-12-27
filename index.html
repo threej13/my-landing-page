@@ -3,200 +3,264 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Insurance Ally - Maximize Your Claim</title>
+<title>Insurance Ally – Maximize Your Claim</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f9f9f9;
-        color: #333;
-    }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
 
-    .hero {
-        background: #ffffff;
-        text-align: center;
-        padding: 30px 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .hero h1 {
-        font-size: 28px;
-        color: #012b61;
-        font-weight: bold;
-    }
-    .hero p {
-        font-size: 17px;
-        margin: 10px auto;
-        max-width: 600px;
-    }
-    .cta-btn {
-        background: #28a745;
-        color: #fff;
-        padding: 15px 25px;
-        text-decoration: none;
-        display: inline-block;
-        border-radius: 5px;
-        margin-top: 15px;
-        font-weight: bold;
-        font-size: 16px;
-    }
+/* HERO */
+.hero {
+  background: #ffffff;
+  text-align: center;
+  padding: 30px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.hero h1 {
+  font-size: 28px;
+  color: #012b61;
+  font-weight: bold;
+}
+.hero p {
+  font-size: 17px;
+  margin: 10px auto;
+  max-width: 600px;
+}
+.cta-btn {
+  background: #28a745;
+  color: #fff;
+  padding: 15px 25px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 16px;
+}
 
-    .logos {
-        background: #ffffff;
-        padding: 35px 20px 40px;
-        text-align: center;
-    }
+/* AS SEEN ON */
+.logos {
+  background: #ffffff;
+  padding: 35px 20px 40px;
+  text-align: center;
+}
+.as-seen-on-badge {
+  width: 520px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
 
-    .video-section {
-        text-align: center;
-        margin: 40px auto;
-    }
+/* VIDEO */
+.video-section {
+  text-align: center;
+  margin: 40px auto;
+}
+.video-wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
 
-    .form-section {
-        background: #ffffff;
-        padding: 30px;
-        max-width: 500px;
-        margin: 30px auto;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        border-radius: 5px;
-    }
+/* FORM */
+.form-section {
+  background: #ffffff;
+  padding: 30px;
+  max-width: 500px;
+  margin: 30px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+.form-section h2 {
+  text-align: center;
+  color: #012b61;
+}
+.form-section label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+.form-section select,
+.form-section input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-    .form-section label {
-        display: block;
-        margin: 10px 0 5px;
-        font-weight: bold;
-    }
+.text-disclaimer {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 8px;
+}
 
-    .form-section select,
-    .form-section input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+.sms-disclosure {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #555;
+  margin-top: 6px;
+}
 
-    .text-disclaimer {
-        font-size: 12px;
-        color: #555;
-        margin-bottom: 10px;
-    }
+.form-section button {
+  width: 100%;
+  padding: 15px;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    .sms-disclosure {
-        font-size: 12px;
-        color: #555;
-        margin-top: 6px;
-        line-height: 1.4;
-    }
-
-    .form-section button {
-        width: 100%;
-        padding: 15px;
-        background: #28a745;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    .footer {
-        text-align: center;
-        padding: 15px;
-        background: #f1f1f1;
-        font-size: 12px;
-    }
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #f1f1f1;
+  font-size: 12px;
+}
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
-    <h1>Homeowners: Are You Leaving Insurance Money on the Table?</h1>
-    <p>Having trouble with your insurance claim? Need a policy review? We’ve got you covered.</p>
-    <a class="cta-btn" href="#form">Free Consultation →</a>
+  <h1>Homeowners: Are You Leaving Insurance Money on the Table?</h1>
+  <p>Having trouble with your insurance claim? Need a policy review? We’ve got you covered.</p>
+  <a class="cta-btn" href="#form">Free Consultation →</a>
 </div>
 
+<!-- AS SEEN ON -->
+<div class="logos">
+  <img
+    src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/Badge%209%20Light.webp"
+    class="as-seen-on-badge"
+    alt="As Seen On"
+  />
+</div>
+
+<!-- VIDEO -->
+<div class="video-section">
+  <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/nSiw5FXbL6s?rel=0"
+      title="Insurance Ally Video"
+      frameborder="0"
+      allowfullscreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+    </iframe>
+  </div>
+</div>
+
+<!-- FORM -->
 <div class="form-section" id="form">
-    <h2>Find Out What You Qualify For</h2>
+  <h2>Find Out What You Qualify For</h2>
 
-    <form id="ia-lead-form" action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/" method="POST">
+  <form
+    id="ia-lead-form"
+    action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/"
+    method="POST">
 
-        <label>What do you need help with?</label>
-        <select name="help_type" required>
-            <option value="">-- Select --</option>
-            <option value="maximize-claim">Maximize an Insurance Claim</option>
-            <option value="better-rates">Lower My Insurance Rates</option>
-            <option value="policy-review">Policy Review / Coverage Questions</option>
-        </select>
+    <label>What do you need help with?</label>
+    <select name="help_type" required>
+      <option value="">-- Select --</option>
+      <option value="maximize-claim">Maximize an Insurance Claim</option>
+      <option value="better-rates">Lower My Insurance Rates</option>
+      <option value="policy-review">Policy Review / Coverage Questions</option>
+    </select>
 
-        <label>When did your damage occur?</label>
-        <select name="damage_timing" required>
-            <option value="">-- Select --</option>
-            <option value="past-month">Past month</option>
-            <option value="1-3-months">1–3 months ago</option>
-            <option value="4-6-months">4–6 months ago</option>
-            <option value="over-year">Over a year ago</option>
-            <option value="no-damage">No Damage</option>
-        </select>
+    <label>When did your damage occur?</label>
+    <select name="damage_timing" required>
+      <option value="">-- Select --</option>
+      <option value="past-month">Past month</option>
+      <option value="1-3-months">1–3 months ago</option>
+      <option value="4-6-months">4–6 months ago</option>
+      <option value="over-year">Over a year ago</option>
+      <option value="no-damage">No Damage</option>
+    </select>
 
-        <label>Full Name</label>
-        <input type="text" name="name" required />
+    <label>Full Name</label>
+    <input type="text" name="name" required />
 
-        <label>Email</label>
-        <input type="email" name="email" required />
+    <label>Email</label>
+    <input type="email" name="email" required />
 
-        <label>Phone</label>
-        <input type="tel" name="phone" id="phone" placeholder="(602) 000-0000" required />
+    <label>Phone</label>
+    <input
+      type="tel"
+      name="phone"
+      id="phone"
+      placeholder="(602) 000-0000"
+      required
+    />
 
-        <!-- ✅ REPLACED CHECKBOX TEXT -->
-        <div class="text-disclaimer">
-            <input type="checkbox" name="textPermission" required />
-            I agree to receive text messages from Insurance Ally related to my inquiry.
-        </div>
+    <!-- CHECKBOX (carrier approved) -->
+    <div class="text-disclaimer">
+      <input type="checkbox" name="textPermission" required />
+      I agree to receive text messages from Insurance Ally related to my inquiry.
+    </div>
 
-        <button type="submit">Submit →</button>
+    <button type="submit">Submit →</button>
 
-        <!-- ✅ ADDED DISCLOSURE TEXT -->
-        <p class="sms-disclosure">
-            By submitting this form, you agree to receive text messages from Insurance Ally regarding your inquiry and related services.
-            Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help.
-        </p>
+    <!-- DISCLOSURE (carrier approved) -->
+    <p class="sms-disclosure">
+      By submitting this form, you agree to receive text messages from Insurance Ally regarding your inquiry and related services.
+      Message frequency varies. Message and data rates may apply.
+      Reply STOP to opt out. Reply HELP for help.
+    </p>
 
-        <p id="form-status"></p>
-    </form>
+    <p id="form-status"></p>
+  </form>
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
-    © 2025 Insurance Ally | Licensed Public Adjusters
+  © 2025 Insurance Ally | Licensed Public Adjusters
 </div>
 
 <script>
 document.getElementById("ia-lead-form").addEventListener("submit", async function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const phoneInput = document.getElementById("phone");
-    let rawPhone = phoneInput.value.replace(/\D/g, "");
+  const phoneInput = document.getElementById("phone");
+  let rawPhone = phoneInput.value.replace(/\D/g, "");
 
-    if (rawPhone.length !== 10) {
-        alert("Please enter a valid 10-digit U.S. phone number.");
-        return;
-    }
+  if (rawPhone.length !== 10) {
+    alert("Please enter a valid 10-digit U.S. phone number.");
+    return;
+  }
 
-    phoneInput.value = "+1" + rawPhone;
+  phoneInput.value = "+1" + rawPhone;
 
-    const data = new FormData(this);
+  const data = new FormData(this);
 
-    try {
-        await fetch(this.action, { method: "POST", body: data });
-        window.location.href = "thank_you_page.html";
-    } catch {
-        document.getElementById("form-status").textContent = "Submission failed.";
-    }
+  try {
+    await fetch(this.action, {
+      method: "POST",
+      body: data
+    });
+    window.location.href = "thank_you_page.html";
+  } catch {
+    document.getElementById("form-status").textContent = "Submission failed.";
+  }
 });
 </script>
 
 </body>
 </html>
-
