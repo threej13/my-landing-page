@@ -134,6 +134,11 @@ body {
   background: #f1f1f1;
   font-size: 12px;
 }
+.footer a {
+  color: #012b61;
+  text-decoration: none;
+  font-weight: bold;
+}
 </style>
 </head>
 
@@ -228,7 +233,8 @@ body {
 
 <!-- FOOTER -->
 <div class="footer">
-  © 2025 Insurance Ally | Licensed Public Adjusters
+  © 2025 Insurance Ally | Licensed Public Adjusters<br>
+  <a href="terms.html">Terms & Conditions</a>
 </div>
 
 <script>
@@ -249,17 +255,14 @@ document.getElementById("ia-lead-form").addEventListener("submit", function (e) 
 
   phoneInput.value = "+1" + digits;
 
-  // BACKGROUND submit to Zapier (same data, same endpoint)
   fetch(e.target.action, {
     method: "POST",
     body: new FormData(e.target)
   });
 
-  // IMMEDIATE redirect (restores original behavior)
   window.location.href = "thank_you_page.html";
 });
 </script>
 
 </body>
 </html>
-
