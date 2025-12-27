@@ -210,7 +210,7 @@ body {
       required
     />
 
-    <!-- CHECKBOX (carrier approved) -->
+    <!-- CHECKBOX -->
     <div class="text-disclaimer">
       <input type="checkbox" name="textPermission" required />
       I agree to receive text messages from Insurance Ally related to my inquiry.
@@ -218,14 +218,13 @@ body {
 
     <button type="submit">Submit →</button>
 
-    <!-- DISCLOSURE (carrier approved) -->
+    <!-- DISCLOSURE -->
     <p class="sms-disclosure">
       By submitting this form, you agree to receive text messages from Insurance Ally regarding your inquiry and related services.
       Message frequency varies. Message and data rates may apply.
       Reply STOP to opt out. Reply HELP for help.
     </p>
 
-    <p id="form-status"></p>
   </form>
 </div>
 
@@ -235,30 +234,28 @@ body {
 </div>
 
 <script>
-document.getElementById("ia-lead-form").addEventListener("submit", async function (e) {
+document.getElementById("ia-lead-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const phoneInput = document.getElementById("phone");
-  let rawPhone = phoneInput.value.replace(/\D/g, "");
+  let digits = phoneInput.value.replace(/\D/g, "");
 
-  if (rawPhone.length !== 10) {
-    alert("Please enter a valid 10-digit U.S. phone number.");
+  // Accept 11-digit numbers that start with 1
+  if (digits.length === 11 && digits.startsWith("1")) {
+    digits = digits.slice(1);
+  }
+
+  // Enforce 10-digit US number
+  if (digits.length !== 10) {
+    alert("Please enter a valid U.S. phone number.");
     return;
   }
 
-  phoneInput.value = "+1" + rawPhone;
+  // Convert to E.164
+  phoneInput.value = "+1" + digits;
 
-  const data = new FormData(this);
-
-  try {
-    await fetch(this.action, {
-      method: "POST",
-      body: data
-    });
-    window.location.href = "thank_you_page.html";
-  } catch {
-    document.getElementById("form-status").textContent = "Submission failed.";
-  }
+  // Native submit (Zapier-friendly)
+  e.target.submit();
 });
 </script>
 
