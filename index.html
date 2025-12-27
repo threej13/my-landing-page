@@ -40,23 +40,20 @@ body {
   border-radius: 5px;
   margin-top: 18px;
   font-weight: bold;
-  font-size: 16px;
 }
 .cta-btn:hover {
   background: #218838;
 }
 
-/* AS SEEN ON */
+/* LOGOS */
 .logos {
   background: #ffffff;
-  padding: 35px 20px 45px;
+  padding: 35px 20px;
   text-align: center;
 }
 .as-seen-on-badge {
   width: 520px;
   max-width: 100%;
-  display: block;
-  margin: 0 auto;
 }
 
 /* VIDEO */
@@ -105,7 +102,6 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 .form-section button {
   width: 100%;
   padding: 15px;
@@ -128,7 +124,6 @@ body {
   margin-top: 6px;
 }
 
-/* FOOTER */
 .footer {
   text-align: center;
   padding: 18px;
@@ -142,18 +137,15 @@ body {
 
 <div class="hero">
   <h1>Homeowners: Are You Leaving Insurance Money on the Table?</h1>
-  <p>
-    Struggling with an insurance claim or unsure what your policy really covers?
-    Insurance Ally helps homeowners navigate claims with clarity and confidence.
-  </p>
+  <p>We help homeowners understand their coverage and maximize legitimate claims.</p>
   <a class="cta-btn" href="#form">Free Consultation →</a>
 </div>
 
 <div class="logos">
   <img
     src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/Badge%209%20Light.webp"
-    alt="As Seen On"
     class="as-seen-on-badge"
+    alt="As Seen On"
   />
 </div>
 
@@ -161,7 +153,6 @@ body {
   <div class="video-wrapper">
     <iframe
       src="https://www.youtube.com/embed/nSiw5FXbL6s?rel=0"
-      title="Insurance Ally Overview"
       frameborder="0"
       allowfullscreen>
     </iframe>
@@ -171,15 +162,16 @@ body {
 <div class="form-section" id="form">
   <h2>Find Out What You Qualify For</h2>
 
-  <form id="ia-lead-form"
-        action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/"
-        method="POST">
+  <form
+    id="ia-lead-form"
+    action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/"
+    method="POST">
 
     <label>What do you need help with?</label>
     <select name="help_type" required>
       <option value="">-- Select --</option>
-      <option value="maximize-claim">Maximize an Insurance Claim</option>
       <option value="lower-rates">Lower My Insurance Rates</option>
+      <option value="maximize-claim">Maximize an Insurance Claim</option>
       <option value="policy-review">Policy Review / Coverage Questions</option>
     </select>
 
@@ -202,17 +194,14 @@ body {
     <label>Phone</label>
     <input
       type="tel"
-      id="phone"
       name="phone"
-      inputmode="numeric"
-      autocomplete="tel-national"
-      placeholder="6021234567"
-      maxlength="10"
+      id="phone"
+      placeholder="(602) 000-0000"
       required
     />
 
     <label>
-      <input type="checkbox" name="sms_consent" value="yes" required />
+      <input type="checkbox" required />
       I consent to receive text messages from Insurance Ally.
     </label>
 
@@ -231,40 +220,38 @@ body {
 </div>
 
 <div class="footer">
-  © 2025 Insurance Ally | Licensed Public Adjusters<br>
-  <a href="terms.html" style="color:#012b61;font-weight:bold;text-decoration:none;">
-    Terms & Conditions
-  </a>
+  © 2025 Insurance Ally | Licensed Public Adjusters
 </div>
 
 <script>
-const phoneField = document.getElementById("phone");
-
-phoneField.addEventListener("input", function () {
-  this.value = this.value.replace(/\D/g, "").slice(0, 10);
-});
-
-document.getElementById("ia-lead-form").addEventListener("submit", async function (e) {
+document.getElementById("ia-lead-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const raw = phoneField.value;
+  const phoneInput = document.getElementById("phone");
+  const rawPhone = phoneInput.value.replace(/\D/g, "");
 
-  if (raw.length !== 10) {
-    alert("Enter a valid 10-digit U.S. phone number.");
+  if (rawPhone.length !== 10) {
+    alert("Please enter a valid 10-digit U.S. phone number.");
     return;
   }
 
-  phoneField.value = "+1" + raw;
+  phoneInput.value = "+1" + rawPhone;
 
-  document.querySelector("[name='consent_timestamp']").value = new Date().toISOString();
-  document.querySelector("[name='consent_page']").value = window.location.href;
+  document.querySelector("[name='consent_timestamp']").value =
+    new Date().toISOString();
+  document.querySelector("[name='consent_page']").value =
+    window.location.href;
 
-  try {
-    await fetch(this.action, { method: "POST", body: new FormData(this) });
+  fetch(this.action, {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(() => {
     window.location.href = "thank_you_page.html";
-  } catch {
+  })
+  .catch(() => {
     document.getElementById("form-status").textContent = "Submission failed.";
-  }
+  });
 });
 </script>
 
