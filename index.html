@@ -117,6 +117,14 @@ body {
   background: #218838;
 }
 
+.sms-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
 .sms-disclosure {
   font-size: 12px;
   line-height: 1.4;
@@ -196,11 +204,13 @@ body {
       type="tel"
       name="phone"
       id="phone"
+      inputmode="numeric"
+      autocomplete="tel"
       placeholder="(602) 000-0000"
       required
     />
 
-    <label>
+    <label class="sms-consent">
       <input type="checkbox" required />
       I consent to receive text messages from Insurance Ally.
     </label>
@@ -230,12 +240,18 @@ document.getElementById("ia-lead-form").addEventListener("submit", function (e) 
   const phoneInput = document.getElementById("phone");
   const rawPhone = phoneInput.value.replace(/\D/g, "");
 
-  if (rawPhone.length !== 10) {
-    alert("Please enter a valid 10-digit U.S. phone number.");
+  let e164;
+
+  if (rawPhone.length === 10) {
+    e164 = "+1" + rawPhone;
+  } else if (rawPhone.length === 11 && rawPhone.startsWith("1")) {
+    e164 = "+" + rawPhone;
+  } else {
+    alert("Please enter a valid U.S. phone number.");
     return;
   }
 
-  phoneInput.value = "+1" + rawPhone;
+  phoneInput.value = e164;
 
   document.querySelector("[name='consent_timestamp']").value =
     new Date().toISOString();
@@ -257,4 +273,3 @@ document.getElementById("ia-lead-form").addEventListener("submit", function (e) 
 
 </body>
 </html>
-
