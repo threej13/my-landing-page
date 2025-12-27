@@ -73,8 +73,7 @@ body {
 }
 .video-wrapper iframe {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   border-radius: 8px;
@@ -141,7 +140,6 @@ body {
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <h1>Homeowners: Are You Leaving Insurance Money on the Table?</h1>
   <p>
@@ -151,36 +149,31 @@ body {
   <a class="cta-btn" href="#form">Free Consultation →</a>
 </div>
 
-<!-- AS SEEN ON -->
 <div class="logos">
-  <img 
+  <img
     src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/Badge%209%20Light.webp"
     alt="As Seen On"
     class="as-seen-on-badge"
   />
 </div>
 
-<!-- VIDEO -->
 <div class="video-section">
   <div class="video-wrapper">
-    <iframe 
+    <iframe
       src="https://www.youtube.com/embed/nSiw5FXbL6s?rel=0"
       title="Insurance Ally Overview"
       frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen>
     </iframe>
   </div>
 </div>
 
-<!-- FORM -->
 <div class="form-section" id="form">
   <h2>Find Out What You Qualify For</h2>
 
-  <form 
-    id="ia-lead-form"
-    action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/"
-    method="POST">
+  <form id="ia-lead-form"
+        action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/"
+        method="POST">
 
     <label>What do you need help with?</label>
     <select name="help_type" required>
@@ -209,87 +202,72 @@ body {
     <label>Phone</label>
     <input
       type="tel"
-      name="phone"
       id="phone"
-      placeholder="(602) 000-0000"
+      name="phone"
+      inputmode="numeric"
+      autocomplete="tel-national"
+      placeholder="6021234567"
+      maxlength="10"
       required
     />
 
-    <label style="font-weight:bold;">
-      <input
-        type="checkbox"
-        name="sms_consent"
-        value="yes"
-        required
-        style="margin-right:6px;"
-      />
+    <label>
+      <input type="checkbox" name="sms_consent" value="yes" required />
       I consent to receive text messages from Insurance Ally.
     </label>
 
     <p class="sms-disclosure">
-      By submitting this form, you agree to receive automated text messages from
-      Insurance Ally regarding your inquiry and related services.
-      Message frequency varies. Message and data rates may apply.
-      Reply STOP to opt out. Reply HELP for help.
-      Consent is not a condition of purchase.
+      Automated messages. Msg & data rates may apply.
+      Reply STOP to opt out. HELP for help.
+      Consent not required for purchase.
     </p>
 
-    <!-- Compliance metadata -->
-    <input type="hidden" name="consent_timestamp" value="">
-    <input type="hidden" name="consent_page" value="">
+    <input type="hidden" name="consent_timestamp">
+    <input type="hidden" name="consent_page">
 
     <button type="submit">Submit</button>
-
-    <p id="form-status" style="text-align:center; font-size:13px;"></p>
+    <p id="form-status"></p>
   </form>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
   © 2025 Insurance Ally | Licensed Public Adjusters<br>
-  <a href="terms.html" style="color:#012b61; font-weight:bold; text-decoration:none;">
+  <a href="terms.html" style="color:#012b61;font-weight:bold;text-decoration:none;">
     Terms & Conditions
   </a>
 </div>
 
 <script>
+const phoneField = document.getElementById("phone");
+
+phoneField.addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, "").slice(0, 10);
+});
+
 document.getElementById("ia-lead-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  const phoneInput = document.getElementById("phone");
-  let rawPhone = phoneInput.value.replace(/\D/g, "");
+  const raw = phoneField.value;
 
-  if (rawPhone.length !== 10) {
-    alert("Please enter a valid 10-digit U.S. phone number.");
+  if (raw.length !== 10) {
+    alert("Enter a valid 10-digit U.S. phone number.");
     return;
   }
 
-  phoneInput.value = "+1" + rawPhone;
+  phoneField.value = "+1" + raw;
 
-  document.querySelector("input[name='consent_timestamp']").value =
-    new Date().toISOString();
-  document.querySelector("input[name='consent_page']").value =
-    window.location.href;
-
-  const status = document.getElementById("form-status");
-  status.textContent = "Submitting...";
+  document.querySelector("[name='consent_timestamp']").value = new Date().toISOString();
+  document.querySelector("[name='consent_page']").value = window.location.href;
 
   try {
-    const response = await fetch(this.action, {
-      method: "POST",
-      body: new FormData(this)
-    });
-
-    if (response.ok) {
-      window.location.href = "thank_you_page.html";
-    } else {
-      status.textContent = "Submission failed. Please try again.";
-    }
-  } catch (err) {
-    status.textContent = "Submission failed. Please try again.";
+    await fetch(this.action, { method: "POST", body: new FormData(this) });
+    window.location.href = "thank_you_page.html";
+  } catch {
+    document.getElementById("form-status").textContent = "Submission failed.";
   }
 });
 </script>
 
 </body>
 </html>
+
