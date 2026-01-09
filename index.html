@@ -6,11 +6,6 @@
 <title>Insurance Ally – Maximize Your Claim</title>
 
 <style>
-/* GLOBAL */
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -23,58 +18,29 @@ body {
 .hero {
   background: #ffffff;
   text-align: center;
-  padding: 40px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 30px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-
-.brand {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.brand img {
-  height: 42px;
-}
-
-.brand span {
-  font-size: 22px;
-  font-weight: 700;
-  color: #012b61;
-}
-
 .hero h1 {
-  font-size: 32px;
+  font-size: 28px;
   color: #012b61;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-weight: bold;
 }
-
 .hero p {
   font-size: 17px;
+  margin: 10px auto;
   max-width: 600px;
-  margin: 10px auto 18px;
 }
-
 .cta-btn {
   background: #28a745;
-  color: #ffffff;
-  padding: 15px 28px;
+  color: #fff;
+  padding: 15px 25px;
   text-decoration: none;
   display: inline-block;
-  border-radius: 6px;
-  font-weight: 700;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-weight: bold;
   font-size: 16px;
-}
-
-/* PROOF */
-.proof-line {
-  margin-top: 26px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #c9a24d;
 }
 
 /* AS SEEN ON */
@@ -83,7 +49,6 @@ body {
   padding: 35px 20px 40px;
   text-align: center;
 }
-
 .as-seen-on-badge {
   width: 520px;
   max-width: 100%;
@@ -96,7 +61,6 @@ body {
   text-align: center;
   margin: 40px auto;
 }
-
 .video-wrapper {
   position: relative;
   max-width: 800px;
@@ -104,7 +68,6 @@ body {
   padding-bottom: 56.25%;
   height: 0;
 }
-
 .video-wrapper iframe {
   position: absolute;
   inset: 0;
@@ -122,18 +85,15 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   border-radius: 5px;
 }
-
 .form-section h2 {
   text-align: center;
   color: #012b61;
 }
-
 .form-section label {
   display: block;
   margin: 10px 0 5px;
   font-weight: bold;
 }
-
 .form-section select,
 .form-section input {
   width: 100%;
@@ -143,17 +103,24 @@ body {
   border-radius: 5px;
 }
 
-.text-disclaimer,
-.sms-disclosure {
+.text-disclaimer {
   font-size: 12px;
   color: #555;
+  margin-bottom: 8px;
+}
+
+.sms-disclosure {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #555;
+  margin-top: 6px;
 }
 
 .form-section button {
   width: 100%;
   padding: 15px;
   background: #28a745;
-  color: #ffffff;
+  color: #fff;
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -167,7 +134,6 @@ body {
   background: #f1f1f1;
   font-size: 12px;
 }
-
 .footer a {
   color: #012b61;
   text-decoration: none;
@@ -180,20 +146,9 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="brand">
-    <img src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/F988EBCA-1DCC-4D61-9E8D-0D79A9016F74%20copy.PNG" alt="Insurance Ally">
-    <span>Insurance Ally</span>
-  </div>
-
   <h1>Homeowners: Are You Leaving Insurance Money on the Table?</h1>
-
   <p>Having trouble with your insurance claim? Need a policy review? We’ve got you covered.</p>
-
   <a class="cta-btn" href="#form">Free Consultation →</a>
-
-  <div class="proof-line">
-    Tens of Millions of Dollars Recovered for Policyholders
-  </div>
 </div>
 
 <!-- AS SEEN ON -->
@@ -201,7 +156,8 @@ body {
   <img
     src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/Badge%209%20Light.webp"
     class="as-seen-on-badge"
-    alt="As Seen On">
+    alt="As Seen On"
+  />
 </div>
 
 <!-- VIDEO -->
@@ -211,7 +167,8 @@ body {
       src="https://www.youtube.com/embed/nSiw5FXbL6s?rel=0"
       title="Insurance Ally Video"
       frameborder="0"
-      allowfullscreen>
+      allowfullscreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
     </iframe>
   </div>
 </div>
@@ -220,9 +177,10 @@ body {
 <div class="form-section" id="form">
   <h2>Find Out What You Qualify For</h2>
 
-  <form id="ia-lead-form"
-        action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/"
-        method="POST">
+  <form
+    id="ia-lead-form"
+    action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/"
+    method="POST">
 
     <label>What do you need help with?</label>
     <select name="help_type" required>
@@ -243,23 +201,33 @@ body {
     </select>
 
     <label>Full Name</label>
-    <input type="text" name="name" required>
+    <input type="text" name="name" required />
 
     <label>Email</label>
-    <input type="email" name="email" required>
+    <input type="email" name="email" required />
 
     <label>Phone</label>
-    <input type="tel" name="phone" id="phone" required>
+    <input
+      type="tel"
+      name="phone"
+      id="phone"
+      placeholder="(602) 000-0000"
+      required
+    />
 
     <div class="text-disclaimer">
-      <input type="checkbox" required> I agree to receive text messages related to my inquiry.
+      <input type="checkbox" name="textPermission" required />
+      I agree to receive text messages from Insurance Ally related to my inquiry.
     </div>
 
     <button type="submit">Submit →</button>
 
     <p class="sms-disclosure">
-      Message frequency varies. Message & data rates may apply. Reply STOP to opt out.
+      By submitting this form, you agree to receive text messages from Insurance Ally regarding your inquiry and related services.
+      Message frequency varies. Message and data rates may apply.
+      Reply STOP to opt out. Reply HELP for help.
     </p>
+
   </form>
 </div>
 
@@ -272,15 +240,27 @@ body {
 <script>
 document.getElementById("ia-lead-form").addEventListener("submit", function (e) {
   e.preventDefault();
+
   const phoneInput = document.getElementById("phone");
   let digits = phoneInput.value.replace(/\D/g, "");
-  if (digits.length === 10) {
-    phoneInput.value = "+1" + digits;
-    fetch(e.target.action, { method: "POST", body: new FormData(e.target) });
-    window.location.href = "thank_you_page.html";
-  } else {
-    alert("Please enter a valid U.S. phone number.");
+
+  if (digits.length === 11 && digits.startsWith("1")) {
+    digits = digits.slice(1);
   }
+
+  if (digits.length !== 10) {
+    alert("Please enter a valid U.S. phone number.");
+    return;
+  }
+
+  phoneInput.value = "+1" + digits;
+
+  fetch(e.target.action, {
+    method: "POST",
+    body: new FormData(e.target)
+  });
+
+  window.location.href = "thank_you_page.html";
 });
 </script>
 
