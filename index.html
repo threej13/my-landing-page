@@ -6,7 +6,7 @@
 <title>Insurance Ally – Maximize Your Claim</title>
 
 <style>
-/* RESET */
+/* GLOBAL */
 * {
   box-sizing: border-box;
 }
@@ -27,7 +27,6 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* BRAND */
 .brand {
   display: flex;
   justify-content: center;
@@ -46,24 +45,22 @@ body {
   color: #012b61;
 }
 
-/* HERO TEXT */
 .hero h1 {
   font-size: 32px;
   color: #012b61;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .hero p {
   font-size: 17px;
   max-width: 600px;
-  margin: 0 auto 18px;
+  margin: 10px auto 18px;
 }
 
-/* CTA */
 .cta-btn {
   background: #28a745;
-  color: #fff;
+  color: #ffffff;
   padding: 15px 28px;
   text-decoration: none;
   display: inline-block;
@@ -72,7 +69,7 @@ body {
   font-size: 16px;
 }
 
-/* PROOF LINE */
+/* PROOF */
 .proof-line {
   margin-top: 26px;
   font-size: 20px;
@@ -156,7 +153,7 @@ body {
   width: 100%;
   padding: 15px;
   background: #28a745;
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -183,7 +180,6 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-
   <div class="brand">
     <img src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/F988EBCA-1DCC-4D61-9E8D-0D79A9016F74%20copy.PNG" alt="Insurance Ally">
     <span>Insurance Ally</span>
@@ -191,17 +187,13 @@ body {
 
   <h1>Homeowners: Are You Leaving Insurance Money on the Table?</h1>
 
-  <p>
-    Having trouble with your insurance claim? Need a policy review?
-    We’ve got you covered.
-  </p>
+  <p>Having trouble with your insurance claim? Need a policy review? We’ve got you covered.</p>
 
   <a class="cta-btn" href="#form">Free Consultation →</a>
 
   <div class="proof-line">
     Tens of Millions of Dollars Recovered for Policyholders
   </div>
-
 </div>
 
 <!-- AS SEEN ON -->
@@ -209,8 +201,7 @@ body {
   <img
     src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/Badge%209%20Light.webp"
     class="as-seen-on-badge"
-    alt="As Seen On"
-  />
+    alt="As Seen On">
 </div>
 
 <!-- VIDEO -->
@@ -228,7 +219,48 @@ body {
 <!-- FORM -->
 <div class="form-section" id="form">
   <h2>Find Out What You Qualify For</h2>
-  <!-- form stays the same -->
+
+  <form id="ia-lead-form"
+        action="https://hooks.zapier.com/hooks/catch/25669246/ufa6xis/"
+        method="POST">
+
+    <label>What do you need help with?</label>
+    <select name="help_type" required>
+      <option value="">-- Select --</option>
+      <option value="maximize-claim">Maximize an Insurance Claim</option>
+      <option value="better-rates">Lower My Insurance Rates</option>
+      <option value="policy-review">Policy Review / Coverage Questions</option>
+    </select>
+
+    <label>When did your damage occur?</label>
+    <select name="damage_timing" required>
+      <option value="">-- Select --</option>
+      <option value="past-month">Past month</option>
+      <option value="1-3-months">1–3 months ago</option>
+      <option value="4-6-months">4–6 months ago</option>
+      <option value="over-year">Over a year ago</option>
+      <option value="no-damage">No Damage</option>
+    </select>
+
+    <label>Full Name</label>
+    <input type="text" name="name" required>
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label>Phone</label>
+    <input type="tel" name="phone" id="phone" required>
+
+    <div class="text-disclaimer">
+      <input type="checkbox" required> I agree to receive text messages related to my inquiry.
+    </div>
+
+    <button type="submit">Submit →</button>
+
+    <p class="sms-disclosure">
+      Message frequency varies. Message & data rates may apply. Reply STOP to opt out.
+    </p>
+  </form>
 </div>
 
 <!-- FOOTER -->
@@ -236,6 +268,21 @@ body {
   © 2025 Insurance Ally | Licensed Public Adjusters<br>
   <a href="terms.html">Terms & Conditions</a>
 </div>
+
+<script>
+document.getElementById("ia-lead-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const phoneInput = document.getElementById("phone");
+  let digits = phoneInput.value.replace(/\D/g, "");
+  if (digits.length === 10) {
+    phoneInput.value = "+1" + digits;
+    fetch(e.target.action, { method: "POST", body: new FormData(e.target) });
+    window.location.href = "thank_you_page.html";
+  } else {
+    alert("Please enter a valid U.S. phone number.");
+  }
+});
+</script>
 
 </body>
 </html>
