@@ -21,6 +21,24 @@ body {
   padding: 30px 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+/* NEW: HERO BRAND */
+.hero-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.hero-brand img {
+  height: 36px;
+}
+.hero-brand span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #012b61;
+}
+
 .hero h1 {
   font-size: 28px;
   color: #012b61;
@@ -41,6 +59,14 @@ body {
   margin-top: 15px;
   font-weight: bold;
   font-size: 16px;
+}
+
+/* NEW: PROOF LINE */
+.proof-line {
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #c9a24d;
 }
 
 /* AS SEEN ON */
@@ -146,9 +172,25 @@ body {
 
 <!-- HERO -->
 <div class="hero">
+
+  <!-- ICON + NAME (NEW) -->
+  <div class="hero-brand">
+    <img
+      src="https://img1.wsimg.com/isteam/ip/e8d1369e-a6d9-4edf-9362-195f8c9169f7/F988EBCA-1DCC-4D61-9E8D-0D79A9016F74%20copy.PNG"
+      alt="Insurance Ally"
+    />
+    <span>Insurance Ally</span>
+  </div>
+
   <h1>Homeowners: Are You Leaving Insurance Money on the Table?</h1>
   <p>Having trouble with your insurance claim? Need a policy review? We’ve got you covered.</p>
   <a class="cta-btn" href="#form">Free Consultation →</a>
+
+  <!-- PROOF LINE (NEW) -->
+  <div class="proof-line">
+    Tens of Millions of Dollars Recovered for Policyholders
+  </div>
+
 </div>
 
 <!-- AS SEEN ON -->
@@ -266,4 +308,5 @@ document.getElementById("ia-lead-form").addEventListener("submit", function (e) 
 
 </body>
 </html>
+
 
